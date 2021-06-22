@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+   
+</head>
+<body>
+    <h1></h1>
+    <div id="content"></div>
+    <script>
+       
+        var items;
+        fetch("data.json")
+            .then(response => response.json())
+            .then(data => {
+                items = data;
+                console.log(data)
+               
+
+            })
+        
+
+        function loadMore() {
+            var index = 0;
+            
+            for (var i = 0; i < 4; ++i) {
+
+                if (index >= items.length) {
+                    document.getElementById('loadmore').style.visibility = 'hidden';
+                    return
+                }
+                
+                console.log(items[i])
+                
+                
+            }
+            
+        }
+        
+    </script>
+
+    <button id="loadmore" class="btn" onclick="loadMore()">Load More</button>
+
+</body>
+</html>
